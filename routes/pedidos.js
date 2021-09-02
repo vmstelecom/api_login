@@ -1,6 +1,6 @@
-const { Router } = require('express');
 const express = require('express');
 const router = express.Router();
+const mysql = require('../mysql').pool;
 
 router.get('/', (req, res, next) => {
     res.status(200).send({
@@ -9,8 +9,15 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
+
+    const pedido = {
+        id_produto: req.body.id_produto,
+        quantidade: req.body.quantidade
+    };
+
     res.status(201).send({
-        mensagem: 'POST pedidos'
+        mensagem: 'POST pedidos',
+        pedidoCriado: pedido
     });
 });
 

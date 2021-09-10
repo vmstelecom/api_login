@@ -5,15 +5,19 @@ const bodyParser = require('body-parser');
 
 const rotaProdutos = require('./routes/produtos');
 const rotaPedidos = require('./routes/pedidos');
+const rotaUsuarios = require('./routes/usuarios');
+const rotaClientes = require('./routes/clientes');
+const rotaCriar = require('./routes/create');
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
-        'Access-Control-Allow-Header', 
+        'Access-Control-Allow-Header',
         'Origin, x-Requested-With, Content-Type, Accept, Authorization',
         );
 
@@ -26,6 +30,9 @@ app.use((req, res, next) => {
 
 app.use('/produtos', rotaProdutos);
 app.use('/pedidos', rotaPedidos);
+app.use('/usuarios', rotaUsuarios)
+app.use('/clientes', rotaClientes);
+app.use('/criar' , rotaCriar);
 
 app.use((req, res, next) => {
     const erro = new Error('rota não encontrada');

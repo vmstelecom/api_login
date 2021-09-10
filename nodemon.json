@@ -4,6 +4,8 @@
         "MYSQL_USER": "vmstelecom",
         "MYSQL_PASSWORD":"gp92xtab",
         "MYSQL_PORT": 3306,
-        "MYSQL_DATABASE": "ecommerce"
+        "MYSQL_DATABASE": "ecommerce",
+
+        "JWT_KEY": "gp92xtab"
     }
 }
